@@ -37,9 +37,9 @@ namespace ArionCore.Quiznight
         {
             EventBus = new TinyMessengerHub();
 
-            InitializeLog4Net();
-
             DrawTitle();
+
+            InitializeLog4Net();
 
             _log.Info("Server Started!");
 
@@ -51,13 +51,16 @@ namespace ArionCore.Quiznight
 
             // Database
             DataBase = new DataStore("data.json");
-            using (RoomController controller = new RoomController(Core.DataBase))
-            {
-                controller.CreateRoom();
-            }
 
-            // Socket
-            SocketManager = new WebSocketManager(AppConfig.Values.WebSocketServer.Host, AppConfig.Values.WebSocketServer.Port, 3, "/api");
+            // WebSocket
+            SocketManager = new WebSocketManager(new WebSocketManager.WebSocketManagerConfiguration()
+            {
+                Path = AppConfig.Values.WebSocketServer.Path,
+                Port = AppConfig.Values.WebSocketServer.Port,
+                Timeout = AppConfig.Values.WebSocketServer.Timeout,
+                SSLCertificatePath = AppConfig.Values.WebSocketServer.SSLCertificatePath,
+                SSLCertificatePassword = AppConfig.Values.WebSocketServer.SSLCertificatePassword
+            });
             SocketManager.Start();
 
             // Console commands loop. This call is blocking!

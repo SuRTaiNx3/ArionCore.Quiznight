@@ -65,7 +65,11 @@ namespace ArionCore.Quiznight.IO
         public class WebSocketServerConfig
         {
             public int Port { get; set; } = 9100;
-            public string Host { get; set; } = "0.0.0.0";
+            public string Path { get; set; } = "/api";
+            public int Timeout { get; set; } = 10;
+
+            public string SSLCertificatePath { get; set; }
+            public string SSLCertificatePassword { get; set; }
         }
 
         #endregion

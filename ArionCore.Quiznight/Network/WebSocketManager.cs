@@ -5,6 +5,7 @@ using ArionCore.Quiznight.Utils;
 using log4net;
 using Newtonsoft.Json;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using WebSocketSharp.NetCore.Server;
 
 namespace ArionCore.Quiznight.Network
@@ -14,9 +15,9 @@ namespace ArionCore.Quiznight.Network
         #region Globals
 
         private readonly ILog _log = LogManager.GetLogger(typeof(WebSocketManager));
-
-        private string _path = string.Empty;
+        
         private WebSocketServer _webSocket = null;
+        private WebSocketManagerConfiguration _config = null;
 
         private List<WebSocketAPI> _sessions = new List<WebSocketAPI>();
         private List<MethodInfo> _handlerMethods = new List<MethodInfo>();
@@ -33,18 +34,18 @@ namespace ArionCore.Quiznight.Network
 
         #region Constructor
 
-        public WebSocketManager(string host, int port, int timeout, string path)
+        public WebSocketManager(WebSocketManagerConfiguration config)
         {
-            _path = path;
+            _config = config;
 
             PrepareHandlers();
 
-            string uri = $"ws://{host}:{port}";
-            _webSocket = new WebSocketServer(uri);
-            _webSocket.AddWebSocketService<WebSocketAPI>(path);
-            _webSocket.WaitTime = TimeSpan.FromSeconds(timeout);
+            _webSocket = new WebSocketServer(_config.Port, true);
+            _webSocket.SslConfiguration.ServerCertificate = new X509Certificate2(_config.SSLCertificatePath, _config.SSLCertificatePassword);
+            _webSocket.AddWebSocketService<WebSocketAPI>(_config.Path);
+            _webSocket.WaitTime = TimeSpan.FromSeconds(_config.Timeout);
 
-            _log.Info($"WebSocket server initialized on {uri}{path} (timout: {timeout})");
+            _log.Info($"WebSocket server initialized on 0.0.0.0:{_config.Port}{_config.Path} (timout: {_config.Timeout})");
         }
 
         #endregion
@@ -124,6 +125,19 @@ namespace ArionCore.Quiznight.Network
         public WebSocketAPI GetSessionById(string id)
         {
             return Sessions.FirstOrDefault(s => s.ID == id);
+        }
+
+        #endregion
+
+        #region Sub Classes
+
+        public class WebSocketManagerConfiguration
+        {
+            public int Port { get; set; }
+            public int Timeout { get; set; }
+            public string Path { get; set; }
+            public string SSLCertificatePath { get; set; }
+            public string SSLCertificatePassword { get; set; }
         }
 
         #endregion

@@ -33,7 +33,6 @@ namespace ArionCore.Quiznight.Controller
         public string CreateRoom()
         {
             var roomCode = GetNewRoomCode();
-            roomCode = "YTUJ"; // TEMP
             Room room = new Room(roomCode);
             var roomCollection = DataBase.GetCollection<Room>();
             if (roomCollection.InsertOne(room))
@@ -260,8 +259,11 @@ namespace ArionCore.Quiznight.Controller
 
         public Room GetRoomBySessionId(string sessionId)
         {
+            if (string.IsNullOrEmpty(sessionId))
+                return null;
+
             var collection = DataBase.GetCollection<Room>();
-            var room = collection.Find(r => r.Moderator.SessionId == sessionId || r.Players.Any(p => p.SessionId == sessionId)).FirstOrDefault();
+            var room = collection.Find(r => r.Moderator?.SessionId == sessionId || r.Players.Any(p => p.SessionId == sessionId)).FirstOrDefault();
             return room;
         }
 

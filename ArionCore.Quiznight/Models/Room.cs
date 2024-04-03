@@ -12,8 +12,20 @@ namespace ArionCore.Quiznight.Models
         [JsonProperty("moderator")]
         public Player Moderator { get; set; }
 
+        private List<Player> _players = new List<Player>();
         [JsonProperty("players")]
-        public List<Player> Players { get; set; } = new List<Player>();
+        public List<Player> Players 
+        {
+            get 
+            {
+                if (_players == null) _players = new List<Player>();
+                return _players;
+            }
+            set 
+            { 
+                _players = value; 
+            } 
+        }
 
         [JsonProperty("is_buzzer_open")]
         public bool IsBuzzerOpen { get; set; } = true;
