@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Quiznight</title>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no, minimal-ui, viewport-fit=cover">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+		<script src="libs/jquery/jquery-1.10.2.js"></script>
+		<link rel="stylesheet" href="libs/jquery/jquery-ui.css">
+		<script src="libs/jquery/jquery-ui.js"></script>
+		<script type="text/javascript" src="libs/jquery/jquery.countdown.min.js"></script>
+		<script type="text/javascript" src="libs/moment.js"></script>
+		<script type="text/javascript" src="libs/litepicker.js"></script>
+		<script type="text/javascript" src="libs/populator.js"></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler-vendors.min.css">
+		
+		<script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/libs/apexcharts/dist/apexcharts.min.js" defer></script>
+		
+		<link rel="stylesheet" href="css/style.css">
+		<script type="module" src="js/index.js"></script>
+	</head>
+	<body data-bs-theme="dark">
+		<div class="page">
+			<header class="navbar navbar-expand-sm navbar-light d-print-none">
+				<div class="container-xl">
+					<h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3 mx-auto">
+						<a href="#">
+							<img src="img/logo_32.png" width="110" height="32" alt="Tabler" class="navbar-brand-image" />
+						</a>
+					</h1>
+				</div>
+			</header>
+			<div class="page-wrapper">
+				<div class="page-body">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12">
+								<div id="alert-error" style="display: none" class="alert alert-important alert-danger alert-dismissible" role="alert">
+									<div class="d-flex">
+										<div>
+											<!-- Download SVG icon from http://tabler-icons.io/i/alert-circle -->
+											<svg xmlns="http://www.w3.org/2000/svg" class="icon alert-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+										</div>
+										<div id="alert-error-message">
+											I'm so sorry…
+										</div>
+									</div>
+									<a id="alert-error-submit-dismiss" class="btn-close"></a>
+								</div>
+							</div>
+						</div>
+						<div id="body-content">
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer class="footer footer-transparent d-print-none">
+				<div class="container-xl">
+					<div class="row text-center align-items-center flex-row-reverse">
+						<div class="col-lg-auto ms-lg-auto">
+							<ul class="list-inline list-inline-dots mb-0">
+								<li class="list-inline-item"><a href="https://github.com/SuRTaiNx3/ArionCore.Quiznight/tree/master" target="_blank" class="link-secondary" rel="noopener">Source code</a></li>
+							</ul>
+						</div>
+						<div class="col-12 col-lg-auto mt-3 mt-lg-0">
+							<ul class="list-inline list-inline-dots mb-0">
+								<li class="list-inline-item">
+									Copyright © 2023
+									<a href="." class="link-secondary">SuRTaiNx3</a>.
+									All rights reserved.
+								</li>
+								<li class="list-inline-item">
+									<a href="#" class="link-secondary" rel="noopener">
+										v1.0.0-beta1
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
