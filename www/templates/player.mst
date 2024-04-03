@@ -1,0 +1,80 @@
+<!-- Answers -->
+<div class="row row-deck row-cards pull-down">
+	<div class="col-2"></div>
+	<div class="col-3">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Antwort</h3>
+			</div>
+			<div class="card-body">
+				<div class="mb-3 row">
+					<label for="player-answer-box" class="form-label">Text Antwort:</label>
+					<textarea id="player-answer-box" class="form-control" rows="5"></textarea>
+					<div id="player-answer-box-help" class="form-text">Der Moderator kann live die Antwort mitlesen (für Schätzfragen z.B.).</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Buzzer</h3>
+			</div>
+			<div class="card-body text-center">
+				<a id="player-buzzer">
+					<img id="buzzer-image" src="img/buzzer_big.png"/>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Spielerliste</h3>
+			</div>
+			<div class="card-body">
+				<ul id="player-list" class="list-group"></ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-2"></div>
+</div>
+<div class="modal fade" id="modal-player-name" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Benutzername wählen</h5>
+			</div>
+			<div class="modal-body">
+				<div class="mb-3">
+					<label class="form-label">Username</label>
+					<input id="input-username" type="text" class="form-control" name="example-text-input" placeholder="Your username" />
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" type="button" id="button-confirm-username">
+					<span id="username-loading" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+					<span role="status">Beitreten</span>
+				</button>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal-kicked" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Kicked</h5>
+			</div>
+			<div class="modal-body">
+				Sorry, du wurdest aus dem Raum gekickt!
+			</div>
+			<div class="modal-footer">
+				<a href="https://i.kym-cdn.com/entries/icons/mobile/000/026/489/crying.jpg" class="btn btn-primary ms-auto" id="button-confirm-username">
+					Verlassen
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

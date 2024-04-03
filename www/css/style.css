@@ -1,0 +1,65 @@
+/* General */
+html {
+  scrollbar-gutter: stable;
+}
+
+#join-error{
+	color: red;
+	display: none;
+}
+
+
+/* Moderator */
+#join-room-code{
+	text-transform:uppercase;
+}
+#modal-kick-confirm{
+	background: #141414e0;
+}
+#reset-buzzer-button{
+	margin-top: 10px;
+}
+#tr-player{
+	border: 2px solid transparent; 
+	border-style: double;
+}
+#input-player-score{
+	width: 80px;
+}
+#loading-overlay{
+	position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1e1e1e94;
+    z-index: 10;
+}
+#loading-spinner{
+	margin-top: 200px;
+}
+
+/* Player */
+#buzzer-image{
+	opacity: 0.9;
+}
+#buzzer-image:hover{
+	opacity: 1.0;
+}
+#player-score{
+	font-size: 13pt;
+}
+#modal-player-name{
+	background: #141414e0;
+}
+#modal-kicked{
+	background: #141414e0;
+}
+#player-username{
+	margin-left: 15px; 
+	font-size: 15pt;
+	vertical-align: middle;
+}
+#username-loading{
+	margin-right: 10px;
+}
