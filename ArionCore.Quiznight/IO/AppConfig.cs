@@ -17,6 +17,7 @@ namespace ArionCore.Quiznight.IO
         public static AppConfig Values { get; set; }
 
         public WebSocketServerConfig WebSocketServer { get; set; } = new WebSocketServerConfig();
+        public RestConfig Rest { get; set; } = new RestConfig();
 
         #endregion
 
@@ -55,6 +56,7 @@ namespace ArionCore.Quiznight.IO
         {
             Values = new AppConfig();
             Values.WebSocketServer = new WebSocketServerConfig();
+            Values.Rest = new RestConfig();
             Values.Save();
         }
 
@@ -70,6 +72,13 @@ namespace ArionCore.Quiznight.IO
 
             public string SSLCertificatePath { get; set; }
             public string SSLCertificatePassword { get; set; }
+        }
+
+        public class RestConfig
+        {
+            public string Host { get; set; } = "localhost";
+            public int Port { get; set; } = 3258;
+            public bool UseSSL { get; set; } = false;
         }
 
         #endregion

@@ -26,6 +26,7 @@ namespace ArionCore.Quiznight
         public bool ExitApplication { get; set; } = false;
 
         public static WebSocketManager SocketManager { get; set; }
+        public static RestServer Rest { get; set; }
         public static TinyMessengerHub EventBus { get; set; }
         public static DataStore DataBase { get; set; }
 
@@ -63,6 +64,10 @@ namespace ArionCore.Quiznight
             });
             SocketManager.Start();
 
+            // REST Host
+            Rest = new RestServer();
+            Rest.Start();
+
             // Console commands loop. This call is blocking!
             LoadCommands();
             ConsoleCommandLoop();
@@ -70,6 +75,8 @@ namespace ArionCore.Quiznight
             // The console commands loop will stop if the user exited.
             // This line will then be called.
             SocketManager.Stop();
+            Rest.Stop();
+            Rest = null;
 
             _log.Info("Bye bye, see ya!");
             Thread.Sleep(3000);
@@ -152,8 +159,8 @@ namespace ArionCore.Quiznight
                     Console.WriteLine(ConsoleUtils.PadElementsInLines(lines, 5));
                 }
             }
-
-            #endregion
         }
+        
+        #endregion
     }
 }

@@ -1,14 +1,33 @@
 <div class="row row-deck row-cards">
-	<div class="col-4"></div>
-	<div class="col-4">
+	<div class="col-3"></div>
+	<div class="col-6">
 		<div class="card">
 			<div class="card-header">
 				<h3 class="card-title">Quiznight</h3>
 			</div>
 			<div class="card-body text-center">
-				<h2>Bitte über einen Einladungslink vom Moderator beitreten!</h2>
+				<div class="row justify-content-md-center">
+					<div class="col p-4">
+						<button type="button" class="btn btn-lg btn-light" id="create-room-button">
+							<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+							Raum erstellen
+						</button>
+					</div>
+					<div class="col-md-auto">
+						<div class="vr h-100"></div>
+					</div>
+					<div class="col p-4">
+						<div class="input-group mb-1">
+							<input type="text" class="form-control" aria-describedby="join-room-button" id="join-room-code-input" maxlength="4" style="text-transform:uppercase">
+							<button class="btn btn-light" type="button" id="join-room-button" disabled>
+								<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-login"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M21 12h-13l3 -3" /><path d="M11 15l-3 -3" /></svg>
+								Raum beitreten
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-4"></div>
+	<div class="col-3"></div>
 </div>
