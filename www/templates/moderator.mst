@@ -9,40 +9,36 @@
 	<div class="col-8">
 		<div class="card">
 			<div class="card-header" style="display: block">
-				<div class="row justify-content-between">
-					<div class="col-4">
+				<div class="d-flex">
+					<div class="px-2 flex-grow-1">
 						<h3 class="card-title float-start">Lobby</h3>
 					</div>
-					<div class="col-6">
-						<div class="row">
-							<div class="col">
-								<div class="input-group mb-1" style="margin-top: 10px;">
-									<input type="text" class="form-control" aria-describedby="copy-room-code-button" id="copy-room-code-input" readonly>
-									<button class="btn btn-dark" type="button" id="copy-room-code-button">
-										<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-copy"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg>
-										Copy Link
-									</button>
-								</div>
-							</div>
-							<div class="col">
-								<form class="form-floating">
-									<input id="input-score-per-correct-answer" type="number" class="form-control" placeholder="3" value="3">
-									<label for="input-score-per-correct-answer">Richtige antwort:</label>
-								</form>
-							</div>
-							<div class="col">
-								<form class="form-floating">
-									<input id="input-score-per-wrong-answer" type="number" class="form-control" placeholder="1" value="1">
-									<label for="input-score-per-wrong-answer">Falsche antwort:</label>
-								</form>
-							</div>
-							<div class="col">
-								<button type="button" class="btn btn-light" id="reset-buzzer-button" disabled>
-									<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-restore"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3.06 13a9 9 0 1 0 .49 -4.087" /><path d="M3 4.001v5h5" /><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg>
-									Buzzer freigeben
-								</button>
-							</div>
+					<div class="px-2">
+						<div class="input-group mb-1 float-end" style="margin-top: 10px;">
+							<input type="text" class="form-control" aria-describedby="copy-room-code-button" id="copy-room-code-input" readonly>
+							<button class="btn btn-dark" type="button" id="copy-room-code-button">
+								<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-copy"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" /><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" /></svg>
+								Copy Link
+							</button>
 						</div>
+					</div>
+					<div class="px-2">
+						<form class="form-floating float-end">
+							<input id="input-score-per-correct-answer" type="number" class="form-control" placeholder="3" value="3">
+							<label for="input-score-per-correct-answer">Richtige antwort:</label>
+						</form>
+					</div>
+					<div class="px-2">
+						<form class="form-floating float-end">
+							<input id="input-score-per-wrong-answer" type="number" class="form-control" placeholder="1" value="1">
+							<label for="input-score-per-wrong-answer">Falsche antwort:</label>
+						</form>
+					</div>
+					<div class="px-2">
+						<button type="button" class="btn btn-light float-end" id="reset-buzzer-button" disabled>
+							<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-restore"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3.06 13a9 9 0 1 0 .49 -4.087" /><path d="M3 4.001v5h5" /><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg>
+							Freigeben
+						</button>
 					</div>
 				</div>
 			</div>
@@ -70,6 +66,47 @@
 	</div>
 	<div class="col-2"></div>
 </div>
+&nbsp;
+<div class="row row-deck row-cards pull-down">
+	<div class="col-2"></div>
+	<div class="col-8">
+		<div class="card">
+			<div class="card-header" style="display: block">
+				<div class="d-flex">
+					<div class="px-2 flex-grow-1">
+						<h3 class="card-title float-start">Bild upload</h3>
+					</div>
+					<div class="px-2">
+						<button type="button" class="btn btn-light" id="reset-image-button" disabled>
+							<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-restore"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3.06 13a9 9 0 1 0 .49 -4.087" /><path d="M3 4.001v5h5" /><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg>
+							Bild entfernen
+						</button>
+					</div>
+					<div class="px-2">
+						<button type="button" class="btn btn-success" id="show-image-button" disabled>
+							<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
+							Bild freigeben
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div id="drop-area">
+					<div id="dropped-image-wrapper">
+						<img src="#" id="dropped-image">	
+						<div id="dropped-image-overlay">
+							<h3 id="drop-text">Bild hierhin ziehen</h3>
+							<svg id="image-invisible-icon" xmlns="http://www.w3.org/2000/svg"  width="240"  height="240"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon-tabler icons-tabler-outline icon-tabler-eye-off"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.585 10.587a2 2 0 0 0 2.829 2.828" /><path d="M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87" /><path d="M3 3l18 18" /></svg>
+							<div id="image-upload-spinner" class="spinner-border text-light" role="status"></div>
+							<div id="image-reveal-countdown"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-2"></div>
+</div>
 <div class="modal fade" id="modal-kick-confirm" tabindex="-1" role="dialog">
 	<input type="hidden" id="kick-player-session-id" value=""/>
 	<div class="modal-dialog modal-lg" role="document">
@@ -82,7 +119,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn me-auto" data-bs-dismiss="modal">Abbrechen</button>
-				<button type="button" class="btn btn-primary" id="kick-player" data-bs-dismiss="modal">Ja</button>
+				<button type="button" class="btn btn-primary" id="kick-player-button" data-bs-dismiss="modal">Ja</button>
 			</div>
 		</div>
 	</div>

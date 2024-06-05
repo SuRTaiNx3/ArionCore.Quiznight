@@ -161,9 +161,9 @@ namespace ArionCore.Quiznight.Controller
         public void HandleBuzzerResetRequest(string sessionId)
         {
             var room = GetRoomBySessionId(sessionId);
-            if (room == null || room.IsBuzzerOpen) return;
+            if (room == null || (room.IsBuzzerOpen && !room.Players.Any(p => p.AnswerLoggedIn))) return;
 
-            room.Players.ForEach(p => { p.HasBuzzed = false; });
+            room.Players.ForEach(p => { p.HasBuzzed = false; p.AnswerLoggedIn = false; });
             room.IsBuzzerOpen = true;
 
             var collection = DataBase.GetCollection<Room>();
@@ -176,7 +176,7 @@ namespace ArionCore.Quiznight.Controller
         public void HandleConfirmAnswerRequest(string sessionId, string playerSessionId, bool wasCorrect)
         {
             var room = GetRoomBySessionId(sessionId);
-            if (room == null || room.IsBuzzerOpen) return;
+            if (room == null || (room.IsBuzzerOpen && !room.Players.Any(p => p.AnswerLoggedIn))) return;
 
             var player = room.GetPlayerBySessionId(playerSessionId);
 
@@ -191,7 +191,7 @@ namespace ArionCore.Quiznight.Controller
                 player.WrongAnswers++;
             }
 
-            room.Players.ForEach(p => { p.HasBuzzed = false; });
+            room.Players.ForEach(p => { p.HasBuzzed = false; p.AnswerLoggedIn = false; });
             room.IsBuzzerOpen = true;
 
             var collection = DataBase.GetCollection<Room>();
@@ -230,6 +230,66 @@ namespace ArionCore.Quiznight.Controller
             collection.UpdateOne(r => r.Code == room.Code, room);
         }
 
+        public void HandleImageUploadRequest(string sessionId, string base64Image)
+        {
+            var room = GetRoomBySessionId(sessionId);
+            if (room == null) return;
+
+            room.CurrentImageAsBsae64 = base64Image;
+
+            var collection = DataBase.GetCollection<Room>();
+            collection.UpdateOne(r => r.Code == room.Code, room);
+
+            var json = JsonConvert.SerializeObject(new ImageUploadResponse(base64Image));
+            SendToAllInRoom(room, EMessageType.ImageUploadResponse, json);
+        }
+
+        public void HandleClearImageRequest(string sessionId)
+        {
+            var room = GetRoomBySessionId(sessionId);
+            if (room == null) return;
+
+            room.CurrentImageAsBsae64 = null;
+            room.IsImageVisible = false;
+
+            var collection = DataBase.GetCollection<Room>();
+            collection.UpdateOne(r => r.Code == room.Code, room);
+
+            SendToAllInRoom(room, EMessageType.ClearImageResponse, "");
+        }
+
+        public void HandleShowImageRequest(string sessionId)
+        {
+            var room = GetRoomBySessionId(sessionId);
+            if (room == null) return;
+
+            room.IsImageVisible = true;
+
+            var collection = DataBase.GetCollection<Room>();
+            collection.UpdateOne(r => r.Code == room.Code, room);
+
+            SendToAllInRoom(room, EMessageType.ShowImageResponse, "");
+        }
+
+        public void HandleLoginAnswerRequest(string sessionId)
+        {
+            var room = GetRoomBySessionId(sessionId);
+            if (room == null) return;
+
+            room.IsBuzzerOpen = false;
+            var player = room.GetPlayerBySessionId(sessionId);
+            player.AnswerLoggedIn = true;
+
+            var collection = DataBase.GetCollection<Room>();
+            collection.UpdateOne(r => r.Code == room.Code, room);
+
+            var moderatorSocket = Core.SocketManager.GetSessionById(room.Moderator.SessionId);
+            if (moderatorSocket != null)
+            {
+                var json = JsonConvert.SerializeObject(new LoginAnswerResponse(sessionId));
+                moderatorSocket.SendMessage(EMessageType.LoginAnswerResponse, json);
+            }
+        }
 
         // --- Helpers
 

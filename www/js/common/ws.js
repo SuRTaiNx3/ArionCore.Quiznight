@@ -24,10 +24,19 @@ export default class WS {
 			ConfirmAnswerResponse: 17,
 			KickRequest: 18,
 			KickResponse: 19,
+			ImageUploadRequest: 20,
+			ImageUploadResponse: 21,
+			ClearImageRequest: 22,
+			ClearImageResponse: 23,
+			ShowImageRequest: 24,
+			ShowImageResponse: 25,
+			LoginAnswerRequest: 26,
+			LoginAnswerResponse: 27,
 		};
 	}
 	
-	connect(onMessageEvent){
+	connect(onConnectEvent, onMessageEvent){
+		this._onConnectEvent = onConnectEvent;
 		this._onMessageEvent = onMessageEvent;
 		this._socket = new WebSocket(this._baseUrl);
 		this.registerEvents();
@@ -45,16 +54,17 @@ export default class WS {
 	registerEvents(){
 		// Open
 		this._socket.onopen = () => {
-			//console.log("WebSocket connection opened");		
+			console.log("WebSocket connection opened");		
+			this._onConnectEvent();
 		};
 		
 		this._socket.onmessage = (event) => {
-			//console.log("Message from the server:", event.data);
+			console.log("Message from the server:", event.data);
 			this.processMessage(event.data);
 		};
 		
 		this._socket.onclose = (event) => {
-			//console.log("WebSocket connection closed");
+			console.log("WebSocket connection closed");
 		};
 		
 		this._socket.onerror = (error) => {
@@ -69,9 +79,12 @@ export default class WS {
 			console.log("ERROR: Message malformed!");
 			return;
 		}
-		
+		//console.log(data);
 		var type = parseInt(data[0]);
-		var body = JSON.parse(data[1]);
+		var body = '';
+		if(data.length > 1 && data[1].length > 2){
+			body = JSON.parse(data[1]);
+		}
 		
 		this._onMessageEvent(type, body);
 	}

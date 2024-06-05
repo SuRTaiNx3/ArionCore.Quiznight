@@ -30,6 +30,9 @@ namespace ArionCore.Quiznight.Models
         [JsonProperty("current_answer")]
         public string CurrentAnswer { get; set; }
 
+        [JsonProperty("answer_logged_in")]
+        public bool AnswerLoggedIn { get; set; }
+
         #endregion
 
         #region Constructor

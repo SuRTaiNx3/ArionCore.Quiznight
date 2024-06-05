@@ -23,5 +23,13 @@
         ConfirmAnswerResponse = 17,
         KickRequest = 18,
         KickResponse = 19,
+        ImageUploadRequest = 20,
+        ImageUploadResponse = 21,
+        ClearImageRequest = 22,
+        ClearImageResponse = 23,
+        ShowImageRequest = 24,
+        ShowImageResponse = 25,
+        LoginAnswerRequest = 26,
+        LoginAnswerResponse = 27,
     }
 }

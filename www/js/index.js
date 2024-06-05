@@ -9,10 +9,10 @@ export default class Index {
 		
 	constructor(){
 
-		this.BASE_URL = 'http://localhost/quiznight';
+		this.BASE_URL = 'https://localhost/quiznight';
 		this.WS_BASE_URL = "ws://localhost:9100/api";
 
-        this._theme = new Theme();
+	        this._theme = new Theme();
 		this._theme.applyTheme();
 		
 		this.initControls();
@@ -40,7 +40,7 @@ export default class Index {
 				this.MODERATOR = new Moderator(this.ROOM_CODE, this.BASE_URL, this.WS_BASE_URL);
 			});
 		}else{
-			$.get('templates/player.mst', template => {
+			$.get('templates/player.mst?v=2', template => {
 				$('#body-content').append(mustache.render(template, {}));
 				this.PLAYER = new Player(this.ROOM_CODE, this.BASE_URL, this.WS_BASE_URL);
 			});

@@ -6,8 +6,15 @@
 
         static void Main(string[] args)
         {
-            Instance = new Core();
-            Instance.Startup();
+            try
+            {
+                Instance = new Core();
+                Instance.Startup();
+            }
+            catch (Exception ex)
+            { 
+
+            }
         }
     }
 }

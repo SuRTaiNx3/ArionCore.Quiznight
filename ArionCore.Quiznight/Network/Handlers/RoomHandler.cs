@@ -89,5 +89,41 @@ namespace ArionCore.Quiznight.Network.Handlers
                 controller.HandleKickRequest(session.ID, request.session_to_remove);
             }
         }
+
+        [MessageHandler(MessageType = EMessageType.ImageUploadRequest, ObjType = typeof(ImageUploadRequest))]
+        public static async void ImageUploadRequest(ImageUploadRequest request, WebSocketAPI session)
+        {
+            using (RoomController controller = new RoomController(Core.DataBase))
+            {
+                controller.HandleImageUploadRequest(session.ID, request.image_as_base64);
+            }
+        }
+
+        [MessageHandler(MessageType = EMessageType.ClearImageRequest, ObjType = typeof(ClearImageRequest))]
+        public static async void ClearImageRequest(ClearImageRequest request, WebSocketAPI session)
+        {
+            using (RoomController controller = new RoomController(Core.DataBase))
+            {
+                controller.HandleClearImageRequest(session.ID);
+            }
+        }
+
+        [MessageHandler(MessageType = EMessageType.ShowImageRequest, ObjType = typeof(ShowImageRequest))]
+        public static async void ShowImageRequest(ShowImageRequest request, WebSocketAPI session)
+        {
+            using (RoomController controller = new RoomController(Core.DataBase))
+            {
+                controller.HandleShowImageRequest(session.ID);
+            }
+        }
+
+        [MessageHandler(MessageType = EMessageType.LoginAnswerRequest, ObjType = typeof(LoginAnswerRequest))]
+        public static async void LoginAnswerRequest(LoginAnswerRequest request, WebSocketAPI session)
+        {
+            using (RoomController controller = new RoomController(Core.DataBase))
+            {
+                controller.HandleLoginAnswerRequest(session.ID);
+            }
+        }
     }
 }

@@ -11,6 +11,10 @@
 					<label for="player-answer-box" class="form-label">Text Antwort:</label>
 					<textarea id="player-answer-box" class="form-control" rows="5"></textarea>
 					<div id="player-answer-box-help" class="form-text">Der Moderator kann live die Antwort mitlesen (für Schätzfragen z.B.).</div>
+					<button type="button" class="btn btn-success mt-4" id="login-answer-button" disabled>
+						<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
+						Antwort einloggen
+					</button>
 				</div>
 			</div>
 		</div>
@@ -34,6 +38,27 @@
 			</div>
 			<div class="card-body">
 				<ul id="player-list" class="list-group"></ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-2"></div>
+</div>
+&nbsp;
+<div id="image-container" class="row row-deck row-cards pull-down">
+	<div class="col-2"></div>
+	<div class="col-9">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Bild</h3>
+			</div>
+			<div class="card-body">
+				<div id="image-wrapper">
+					<img src="img/logo.png" id="image">
+					<div id="image-overlay">
+						<div id="image-question-icon">?</div>
+						<div id="image-reveal-countdown"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

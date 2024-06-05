@@ -30,14 +30,17 @@ namespace ArionCore.Quiznight.Models
         [JsonProperty("is_buzzer_open")]
         public bool IsBuzzerOpen { get; set; } = true;
 
-        [JsonProperty("current_question")]
-        public string CurrentQuestion { get; set; }
-
         [JsonProperty("points_correct_answer")]
         public int PointsCorrectAnswer { get; set; } = 3;
 
         [JsonProperty("points_wrong_answer")]
         public int PointsWrongAnswer { get; set; } = 1;
+
+        [JsonProperty("image_as_base64")]
+        public string CurrentImageAsBsae64 { get; set; }
+
+        [JsonProperty("is_image_visible")]
+        public bool IsImageVisible { get; set; } = false;
 
         #endregion
 
