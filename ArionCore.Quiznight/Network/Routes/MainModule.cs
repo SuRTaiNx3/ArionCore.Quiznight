@@ -1,6 +1,8 @@
 ﻿using ArionCore.Quiznight.Controller;
+using ArionCore.Quiznight.IO;
 using log4net;
 using Nancy;
+using Nancy.Security;
 
 namespace ArionCore.Quiznight.Network.Routes
 {
@@ -10,6 +12,9 @@ namespace ArionCore.Quiznight.Network.Routes
 
         public MainModule()
         {
+            if(AppConfig.Values.Rest.UseSSL)
+                this.RequiresHttps();
+
             Before += r =>
             {
                 _log.Debug($"{Request.Method} {Request.Path} FROM {Request.UserHostAddress}");
@@ -22,7 +27,7 @@ namespace ArionCore.Quiznight.Network.Routes
                 {
                     using (RoomController controller = new RoomController(Core.DataBase))
                     {
-                        return new { code =  controller.CreateRoom() };
+                        return new { code = controller.CreateRoom() };
                     }
                 }
                 catch (Exception ex)

@@ -40,8 +40,8 @@ namespace ArionCore.Quiznight.Network
 
             PrepareHandlers();
 
-            _webSocket = new WebSocketServer(_config.Port, false);
-            //_webSocket.SslConfiguration.ServerCertificate = new X509Certificate2(_config.SSLCertificatePath, _config.SSLCertificatePassword);
+            _webSocket = new WebSocketServer(_config.Port, true);
+            _webSocket.SslConfiguration.ServerCertificate = new X509Certificate2(_config.SSLCertificatePath, _config.SSLCertificatePassword);
             _webSocket.AddWebSocketService<WebSocketAPI>(_config.Path);
             _webSocket.WaitTime = TimeSpan.FromSeconds(_config.Timeout);
             

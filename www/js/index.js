@@ -61,6 +61,7 @@ export default class Index {
 	}
 	
 	createRoom(){
+		$('#create-room-button').addClass('btn-loading');
 		Rest.callApi(this.REST_BASE_URL + '/create', "GET").then((data) => {
 			window.location.href = this.BASE_URL + '?rc=' + data.code + '&is_m=1';
 		});
