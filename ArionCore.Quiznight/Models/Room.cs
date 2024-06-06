@@ -37,7 +37,7 @@ namespace ArionCore.Quiznight.Models
         public int PointsWrongAnswer { get; set; } = 1;
 
         [JsonProperty("image_as_base64")]
-        public string CurrentImageAsBsae64 { get; set; }
+        public string CurrentImageAsBase64 { get; set; }
 
         [JsonProperty("is_image_visible")]
         public bool IsImageVisible { get; set; } = false;

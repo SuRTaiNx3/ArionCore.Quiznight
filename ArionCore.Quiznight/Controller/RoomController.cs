@@ -235,7 +235,7 @@ namespace ArionCore.Quiznight.Controller
             var room = GetRoomBySessionId(sessionId);
             if (room == null) return;
 
-            room.CurrentImageAsBsae64 = base64Image;
+            room.CurrentImageAsBase64 = base64Image;
 
             var collection = DataBase.GetCollection<Room>();
             collection.UpdateOne(r => r.Code == room.Code, room);
@@ -249,7 +249,7 @@ namespace ArionCore.Quiznight.Controller
             var room = GetRoomBySessionId(sessionId);
             if (room == null) return;
 
-            room.CurrentImageAsBsae64 = null;
+            room.CurrentImageAsBase64 = null;
             room.IsImageVisible = false;
 
             var collection = DataBase.GetCollection<Room>();
